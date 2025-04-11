@@ -8,6 +8,7 @@ env:
   ECS_CLUSTER: ecs-cluster
   CONTAINER_NAME: app
   ECS_SERVICE: ecs-service
+  ECS_TD: .github/workflows/td.json
 
 jobs:
   terraform:
@@ -58,6 +59,15 @@ jobs:
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" 
+          
+      - name: Fill in the new image ID in the Amazon ECS task definition
+        id: task-def-1
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: ${{ env.ECS_TD }}
+          container-name: ${{ env.CONTAINER_NAME }}
+          image: ${{ steps.build-image.outputs.image }}
+          
 
 
 
