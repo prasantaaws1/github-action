@@ -49,6 +49,12 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
+
+  build-and-push:
+    name: Build and Push
+    runs-on: self-hosted
+    steps:
+        
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
         env:
