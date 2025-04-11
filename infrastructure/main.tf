@@ -45,8 +45,8 @@ module "ecs_app" {
   fargate_memory               = "2048"
   aws_region                   = terraform.workspace
   az_count                     = "2"
-  subnets                      = module.network.public_subnet_ids
+  subnets                      = module.vpc.public_subnet_ids
   sg_ecs_tasks                 = [module.security.ecs_tasks_security_group_id]
-  vpc_id                       = module.network.vpc_id
+  vpc_id                       = module.vpc.vpc_id
   lb_security_groups           = [module.security.alb_security_group_id]
 }
