@@ -27,6 +27,12 @@ module "vpc" {
   az_count = "2"
 }
 
+module "security" {
+  source   = "./modules/security"
+  app_port = 80
+  vpc_id   = module.vpc.vpc_id
+}
+
 module "ecs_app" {
   source                       = "./modules/ecs"
   ec2_task_execution_role_name = "EcsTaskExecutionRoleName"
