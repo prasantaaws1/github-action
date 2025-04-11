@@ -1,11 +1,5 @@
 provider "aws" {
-  profile = "default"
-  region  = terraform.workspace
-  default_tags {
-    tags = {
-      Environment = terraform.workspace
-    }
-  }
+  region     = "us-east-1"
 }
 
 terraform {
