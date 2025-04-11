@@ -53,6 +53,9 @@ jobs:
   build-and-push:
     name: Build and Push
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: infrastructure
     steps:
         
       - name: Build, tag, and push image to Amazon ECR
