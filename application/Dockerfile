@@ -1,6 +1,8 @@
-FROM node:14.17.0-alpine
+FROM node:19.6
+
 WORKDIR /app
-ADD package*.json ./
+RUN npm install express
+COPY package*.json ./
 RUN npm install
-ADD index.js ./
-CMD [ "node", "index.js"]
+COPY .. ./
+CMD node index.js
