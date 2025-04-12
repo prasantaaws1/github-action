@@ -44,3 +44,14 @@ module "ecs_app" {
   vpc_id                       = module.vpc.vpc_id
   lb_security_groups           = [module.security.alb_security_group_id]
 }
+
+module "cloudwatch" {
+  source            = "./modules/cloudwatch"
+  log_group_name    = "/ecs/ecs-app"
+  log_stream_name   = "ecs-log-stream"
+  retention_in_days = 30
+}
+
+
+
+
