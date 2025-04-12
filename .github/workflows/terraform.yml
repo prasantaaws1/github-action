@@ -61,7 +61,6 @@ jobs:
   #         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" 
           
 
-
   # deploy:
   #   name: Deploy
   #   runs-on: ubuntu-latest
