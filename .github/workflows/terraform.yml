@@ -43,7 +43,7 @@ jobs:
 
       - name: Terraform Plan
         id: apply
-        run: terraform destroy -auto-approve 
+        run: terraform apply -auto-approve 
 
       - name: Login to Amazon ECR
         id: login-ecr
