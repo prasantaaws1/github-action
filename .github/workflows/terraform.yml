@@ -8,6 +8,7 @@ env:
   CONTAINER_NAME: app
   ECS_SERVICE: ecs-service
   ECS_TASK_DEFINITION: ecs-app-task
+  AWS_REGION: us-west-1
 
 jobs:
   terraform:
